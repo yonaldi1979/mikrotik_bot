@@ -7,7 +7,7 @@ from commands.del_pppoe import handle_del_pppoe
 from commands.ip_address import handle_add_ip, handle_del_ip
 from commands.firewall import handle_add_firewall, handle_del_firewall
 
-TOKEN = '7708227316:AAERqxasCl8KMFCXnbIo7G-K049--SMrIX0'  # Ganti token Telegram di sini
+TOKEN = 'TELEGRAM_TOKEN'  # Ganti token Telegram di sini
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Bot Mikrotik siap menerima perintah!")
