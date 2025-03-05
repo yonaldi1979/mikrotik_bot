@@ -52,6 +52,10 @@ MIKROTIK_PASSWORD = "password"
 ADMIN_IDS = [123456789]  # List Telegram User ID yang diizinkan
 GROUP_IDS = [-123456789]  # List Group ID yang diizinkan
 
+# CATATAN PENTING
+- Kalau ingin digunakan untuk skala produksi, sebaiknya dan lebih aman jangan gunakan Hardcodec seperti diatas.
+- Baiknya ganti ke lingkungan yang terisolasi dengan .env
+
 Perintah	Deskripsi
 /start	Menampilkan pesan selamat datang
 /help	Menampilkan daftar perintah
