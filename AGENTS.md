@@ -1,34 +1,35 @@
 ## Cursor Cloud specific instructions
 
-### Overview
-This is a Python Telegram bot for managing MikroTik routers. It has two runtime dependencies: `python-telegram-bot` (v20.7) and `routeros-api` (v0.17.0).
+### Ringkasan
 
-### Key gotchas
+Bot Telegram berbasis Python untuk mengelola router MikroTik. Memiliki dua dependency utama: `python-telegram-bot` (v20.7) dan `routeros-api` (v0.17.0).
 
-- **README says `librouteros`; code uses `routeros_api`.** These are different PyPI packages. The correct package is `routeros-api` (installs as `routeros_api`). Do NOT install `librouteros`.
-- **No tests exist in the repo.** Validate changes with `py_compile` and `pyflakes` for syntax/import checks.
-- **Hardcoded credentials.** The Telegram token is in `bot.py` (line 10) and router credentials are in `config.py`. Both must be replaced with real values for the bot to function.
-- The bot requires **two external services** to run end-to-end: Telegram Bot API (internet + valid token) and a MikroTik router with API enabled on port 8728.
+### Hal Penting yang Perlu Diperhatikan
 
-### Running the bot
+- **README menyebut `librouteros`, tapi kode menggunakan `routeros_api`.** Ini adalah package PyPI yang berbeda. Package yang benar adalah `routeros-api` (di-import sebagai `routeros_api`). JANGAN install `librouteros`.
+- **Tidak ada test di repo ini.** Validasi perubahan menggunakan `py_compile` dan `pyflakes` untuk pengecekan syntax/import.
+- **Credentials di-hardcode.** Token Telegram ada di `bot.py` (baris 10) dan credentials router ada di `config.py`. Keduanya harus diganti dengan nilai asli agar bot bisa berjalan.
+- Bot membutuhkan **dua layanan eksternal** untuk berjalan: Telegram Bot API (internet + token valid) dan router MikroTik dengan API aktif di port 8728.
+
+### Menjalankan Bot
 
 ```bash
 source venv/bin/activate
 python bot.py
 ```
 
-The bot prints "Bot is running..." then starts polling the Telegram API. It will fail with `InvalidToken` if the token in `bot.py` is still the placeholder.
+Bot akan mencetak "Bot is running..." lalu mulai polling ke Telegram API. Bot akan gagal dengan error `InvalidToken` jika token di `bot.py` masih placeholder.
 
-### Lint checks
+### Lint Check
 
 ```bash
 source venv/bin/activate
 python -m pyflakes bot.py config.py mikrotik_api.py commands/*.py
 ```
 
-Note: `bot.py` has two existing lint warnings (unused imports of `ADMIN_IDS` and `GROUP_IDS`) — these are pre-existing in the repo.
+Catatan: `bot.py` memiliki dua warning lint (unused import `ADMIN_IDS` dan `GROUP_IDS`) — ini sudah ada sejak awal di repo.
 
-### Syntax/compile checks
+### Pengecekan Syntax/Compile
 
 ```bash
 source venv/bin/activate
