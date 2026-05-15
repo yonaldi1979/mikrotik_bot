@@ -1,0 +1,2 @@
+python-telegram-bot==20.7
+RouterOS-api==0.21.0
